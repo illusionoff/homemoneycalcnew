@@ -1,0 +1,60 @@
+[
+  {
+    "NameCategories": [
+      "Категория 1",
+      "Коммунальны услуги",
+      "Продукты",
+      "Категория 2"
+    ],
+    "colorCategories": [
+      "green",
+      "green",
+      "green",
+      "green"
+    ],
+    "costs": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "coments": [
+      "hj",
+      "",
+      "",
+      ""
+    ],
+    "_id": "5fec79a51dff313080f745ab",
+    "date": "2020-12-30T00:00:00.000Z",
+    "allCost": 10
+  },
+  {
+    "NameCategories": [
+      "Жилье",
+      "Категория 3",
+      "Категория 4",
+      "Проезд"
+    ],
+    "colorCategories": [
+      "green",
+      "teal",
+      "blue",
+      "green"
+    ],
+    "costs": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "coments": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "_id": "5fec79fe1dff313080f745ac",
+    "date": "2020-12-02T00:00:00.000Z",
+    "allCost": 10
+  }
+]

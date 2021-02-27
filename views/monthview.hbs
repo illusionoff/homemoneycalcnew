@@ -1,0 +1,92 @@
+<div class="container ">
+  <div class="page-header center-align">
+    <h4 class="page-name-s"><i class="fa fa-calendar"></i> Просмотр месяцев</h4>
+  </div>
+  <div class="margin-bottom-20">
+    <h5 class="center-align" id="monthView">{{monthView}} г.</h5>
+  </div>
+  <div class="center-align">
+    <button name="buttonVisible" id="buttonTablePie"><i class="fas fa-chart-pie"></i>
+      <i class="fas fa-table"></i></button>
+    <button name="buttonVisible"><i class="fas fa-chart-pie"></i></button>
+    <button name="buttonVisible"><i class="fas fa-table"></i></button>
+  </div>
+  <div class="parent-center">
+    <div class="child-center">
+      <table class="striped table-border" id="table">
+        <thead>
+          <tr>
+            <th> № </th>
+            <th> Имя категории </th>
+            <th> Цена </th>
+            <th> <strong> % </strong></th>
+          </tr>
+        </thead>
+        <tbody class="tbody-border">
+          {{#each arrName}}
+          <tr>
+            <td>
+              {{@index}}
+            </td>
+            <td>
+              <span style=" color:{{lookup ../arrColor @index}}"> {{this}} </span>
+            </td>
+            <td nowrap>
+              {{lookup ../arrCosts @index}}
+            </td>
+            <td nowrap>
+              {{lookup ../arrPercent @index}}
+            </td>
+          </tr>
+          {{/each}}
+          <tr>
+            <td></td>
+            <td>
+              <h5 style=" color: red">Итоговая сумма:</h5>
+            </td>
+            <td>
+              <h5 style=" color: red">{{allCost}}</h5>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class=" center-align margin-t-20">
+    <canvas id="myChart" style="display: inline" width="292" height="292"></canvas>
+  </div>
+  <script src="/functionChartHbs.js"></script>
+  <script>
+    const strArrColor = "{{arrColor}}";
+    const strArrName = "{{arrName}}";
+    const strArrCosts = "{{arrCosts}}";
+
+    const table = document.getElementById("monthView");
+    const strMonth = "{{daysAllMonthYYYYDyble}}";
+    // создаем маccив строк из входной строки
+    const Month = strMonth.split(",");
+    let optionValueHtml = "";
+    Month.forEach((elem) => (optionValueHtml += `<option value="${elem}" />`));
+    const htmlcode = `<div class="center-align" ><h6> Выбрать другой месяц: </h6>
+  <input type='month' id='monthSelect' name='start'  list = 'monthList'>
+  <datalist id='monthList'> ${optionValueHtml}
+  </datalist>
+  </div>
+   `;
+    table.insertAdjacentHTML("afterEnd", htmlcode);
+    // eslint-disable-next-line no-undef
+    document.addEventListener(
+      "DOMContentLoaded",
+      // eslint-disable-next-line no-undef
+      ChartHbs(strArrColor, strArrName, strArrCosts)
+    ); // src="/functionChartHbs.js"
+
+    window.onload = () => {
+      // Выбор определенного месяца из списка возможных( в которых существуют записанные дни на сервере)
+      const monthSelect = document.getElementById("monthSelect");
+      monthSelect.addEventListener("change", () => {
+        window.location.href = `/monthview/month/${monthSelect.value}`;
+      });
+    };
+  </script>

@@ -1,0 +1,88 @@
+<div class="page-header center-align margin-bottom-20">
+  <h4 class="page-name-s"><span class="fa fa-pencil"></span> Редактирование дня</h4>
+  <h5>{{dateView day.date}}</h5>
+  {{#if errors.length  }}
+  <div class="alert alert-danger  pink-text">{{errors}} </div>
+  {{/if}}
+  <div class="container margin-t-50 border margin-bottom-20">
+    {{#each day.NameCategories}}
+    <div class="row striped">
+      <form action="/editday" method="post">
+        <div class="col s1 " id="td_idcategor_{{@index}}">
+          <h6>{{@index}}</h6>
+        </div>
+        <div class="col s11 m3">
+          <h6><span style=" color:{{lookup ../day.colorCategories @index}}">{{this}} </span></h6>
+        </div>
+        <div class="col s11 offset-s1 m2  right-align">
+          <input type="number" class="form-control validate" maxlength="16" data-length="16" name="cost"
+            id="cost_{{@index}}" value="{{lookup ../day.costs @index}}" style="margin: 0 0 0 0; width: 100px" required>
+          <label for="cost_{{@index}}">Цена</label>
+        </div>
+        <div class="col s11 offset-s1 m6 margin-t-b-0 margin-top-0">
+          <textarea class=" materialize-textarea validate comment" maxlength="300" data-length="300" name="coment"
+            id="coment_{{@index}}" value="{{lookup ../day.coments @index}}"
+            style="margin: 0 0 0 0;"> {{lookup ../day.coments @index}}</textarea>
+          <label for="coment_{{@index}}">Комментарии</label>
+        </div>
+        <input type="hidden" name="idcategor" value={{@index}}>
+        <input type="hidden" name="idday" value={{../day._id}}>
+        <div class="col  s11 offset-s1 m12  right-align">
+          <div class="input-field  margin-t-b-0 margin-top-0">
+            <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+            <button type="submit" class=" btn-small btn-lg ">редактировать</button>
+
+            <a href="del/{{@index}}/{{../day._id}}" class="waves-effect waves-light btn-small " name="a_href_del"
+              id="buttondel_{{@index}}" style="width: 105px;">Удалить</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    {{/each}}
+    <form action="/editday/newcategor/" method="post" class="bg-color-aquam">
+      <div class="bg-color-aquam">
+        <h5 class="font-size-15">Добавить новую категорию</h5>
+        <div class="row">
+          <div class="col s6 m4 ">
+            <select class="browser-default" id="select" name='selected' style=" color:{{lookup selectColor 0}}">
+              {{#each selectName}}
+              <option style="color:{{lookup ../selectColor @index}}" id="option_{{@index}}" value="{{this}}">
+                {{this}}
+              </option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="col s6 m2 ">
+            <input type="number" class="form-control validate " max="9999999999999999" name="newcost" id="newcost"
+              value="" style="margin: 0 0 0 0;" required>
+            <label for="newcost">Цена</label>
+          </div>
+          <div class="col s12 m3">
+            <input type="text" class="form-control validate active" maxlength="300" data-length="300" name="newcoment"
+              id="newcoment" value="" style="margin: 0 0 0 0; ">
+            <label for="newcoment">Коментарии</label>
+          </div>
+          <input type="hidden" name="newidday" value={{day._id}}>
+          <div class="col s12 m3">
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+            <button type="submit" class="btn btn-warning btn-lg">Добавить</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  window.onload = () => {
+    // изменяем цвет выбранной в select категории
+    // eslint-disable-next-line func-names
+    document.getElementById("select").onchange = function () {
+      const { selectedIndex } = document.getElementById("select").options;
+      this.setAttribute(
+        "style",
+        document.getElementById(`option_${selectedIndex}`).getAttribute("style")
+      );
+    };
+  };
+</script>

@@ -1,0 +1,17 @@
+{
+  // "env": {
+  //   "browser": true,
+  //   "es6": true,
+  //   "node": false
+  // },
+  // "extends": "airbnb-base",
+  // "parserOptions": {
+  //   "ecmaVersion": 6
+  // },
+  // /*eslint linebreak-style: ["error", "unix"]*/
+  // /*eslint linebreak-style: ["error", "windows"]*/
+  // "eslint linebreak-style": [
+  //   "error",
+  //   "windows"
+  // ]
+}

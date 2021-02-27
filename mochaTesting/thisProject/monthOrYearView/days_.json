@@ -1,0 +1,94 @@
+[
+  {
+    "NameCategories": [
+      "Жилье",
+      "Коммунальны услуги",
+      "Продукты",
+      "Проезд"
+    ],
+    "colorCategories": [
+      "aqua",
+      "teal",
+      "blue",
+      "navy"
+    ],
+    "costs": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "coments": [
+      "hj",
+      "",
+      "",
+      ""
+    ],
+    "_id": "5fec79a51dff313080f745ab",
+    "date": "2020-12-30T00:00:00.000Z",
+    "allCost": 10
+  },
+  {
+    "NameCategories": [
+      "Жилье",
+      "Коммунальны услуги",
+      "Продукты",
+      "Проезд"
+    ],
+    "colorCategories": [
+      "aqua",
+      "teal",
+      "blue",
+      "navy"
+    ],
+    "costs": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "coments": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "_id": "5fec79fe1dff313080f745ac",
+    "date": "2020-12-02T00:00:00.000Z",
+    "allCost": 10
+  },
+  {
+    "NameCategories": [
+      "Развлечения и отдых"
+    ],
+    "colorCategories": [
+      "gray"
+    ],
+    "costs": [
+      4
+    ],
+    "coments": [
+      ""
+    ],
+    "_id": "5fecb9e5b433c53518fb4a9f",
+    "date": "2020-10-08T00:00:00.000Z",
+    "allCost": 4
+  },
+  {
+    "NameCategories": [
+      "Одежда"
+    ],
+    "colorCategories": [
+      "fuchsia"
+    ],
+    "costs": [
+      5
+    ],
+    "coments": [
+      "Comments"
+    ],
+    "_id": "5fecba18b433c53518fb4aa0",
+    "date": "2020-10-20T00:00:00.000Z",
+    "allCost": 5
+  }
+]

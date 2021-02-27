@@ -1,0 +1,51 @@
+<div class="container center">
+
+  <div class="page-header ">
+    <h4 class="page-name-s "><i
+        class="material-icons prefix font-size-icon-2r page-name-s vertical-align-b">account_circle</i> Авторизации
+    </h4>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m6 grey lighten-3 margin-b-2">
+      <h4 class="text-danger  font-size-15"><span class="fa fa-google-plus"></span> Google+</h4>
+      {{#if user.google.token }}
+      <p>
+        <strong>email</strong>: {{user.google.email}} <br>
+        <strong>name</strong>: {{user.google.name}}
+      </p>
+      <a href="/unlink/google" class="waves-effect waves-light btn social google width-198"><i
+          class="fa fa-google"></i>Отключить</a>
+      {{else}}
+      <a href="/connect/google" class="waves-effect waves-light btn social google width-198"><i
+          class="fa fa-google"></i>Подключить</a>
+      {{/if}}
+    </div>
+
+    <div class="col s12 m6 grey lighten-3 margin-b-2">
+      <h4 class="text-danger  font-size-15"><span class="fa fa-facebook"></span> Facebook</h4>
+      {{#if user.facebook.token }}
+      <p>
+        <strong>name</strong>: {{user.facebook.name}} <br>
+      </p>
+      <a href="/unlink/facebook" class="waves-effect waves-light btn social facebook width-198"><i
+          class="fa fa-facebook"></i>Отключить</a>
+      {{else}}
+      <a href="/connect/facebook" class="waves-effect waves-light btn social facebook width-198"><i
+          class="fa fa-facebook"></i>Подключить</a>
+      {{/if}}
+    </div>
+  </div>
+  <div class="grey lighten-3">
+    <h4 class="text-danger font-size-15 margin-top-0"><span class="fa fa-user"></span> Local</h4>
+    {{#if user.local.email}}
+    <p>
+      <strong>email</strong>: {{user.local.email}}<br>
+    </p>
+    <a href="/unlink/local" class="waves-effect waves-light btn width-198">Отключить</a>
+    {{else}}
+    <a href="/connect/local" class="waves-effect waves-light btn width-198">Подключить</a>
+    {{/if}}
+  </div>
+  </p>
+</div>

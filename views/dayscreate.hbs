@@ -1,0 +1,87 @@
+<div class="page-header center-align">
+  <h4 class="page-name-s"><span class="fa fa-calendar-plus-o"></span> Создание дня</h4>
+  {{#if errors.length  }}
+  <div class="alert alert-danger  pink-text">{{errors}} </div>
+  {{/if}}
+  {{#if message.length  }}
+  <h5>
+    <div class="alert alert-danger">{{message}} </div>
+  </h5>
+  {{/if}}
+</div>
+<div class="container border margin-t-50">
+  <div class="center-align">
+    <h6>Сегодня: {{dateViewBrowser}} </h6>
+    <a class="waves-effect waves-light btn datepicker" id="datepicker">Выбрать другую дату</a>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <form action="/dayscreate/createday" method="post">
+        <div class="form-group input-field col s4">
+          <select class="browser-default" id="select" name="selected"
+            style="color:{{lookup user.calc.costs.categories.color 0}}">
+            {{#each user.calc.costs.categories.name}}
+            <option style="color:{{lookup ../user.calc.costs.categories.color @index}}" id="option_{{@index}}"
+              value="{{@index}}">
+              {{this}}
+              {{/each}}
+          </select>
+        </div>
+        <div class="form-group input-field col s3">
+          <label>Сумма</label>
+          <input type="number" class="form-control validate" maxlength="16" data-length="16" name="cost" id="cost"
+            required>
+        </div>
+        <div class="form-group input-field col s5">
+          <label>Коментарий</label>
+          <input type="text" class="form-control validate" maxlength="300" data-length="300" name="coment" id="coment">
+        </div>
+        <input type='hidden' name="date" id="date" value="{{dateNew}}">
+        <div class="center-align">
+          <input type="hidden" name="_csrf" value="{{csrf}}">
+          <button type="submit" class="btn btn-warning btn-lg" id="submit" style="width: 197px;">Создать
+            день</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  window.onload = () => {
+    // eslint-disable-next-line func-names
+    document.getElementById("select").onchange = function () {
+      this.setAttribute(
+        "style",
+        document.getElementById(`option_${this.value}`).getAttribute("style")
+      );
+    };
+  };
+  /* global M, i18n */
+  document.addEventListener("DOMContentLoaded", () => {
+    const elems = document.querySelectorAll(".datepicker");
+    // eslint-disable-next-line prettier/prettier
+    const datepickerOptionsHbs = '{{{datepickerOptions}}}';
+    const datepickerOptions = JSON.parse(datepickerOptionsHbs);
+    datepickerOptions.minDate = new Date(datepickerOptions.minDate); // Json преобразование даты
+    datepickerOptions.maxDate = new Date(datepickerOptions.maxDate);
+    const enableListDate = "{{ enableListDate }}";
+    M.Datepicker.init(elems, {
+      i18n,
+      ...datepickerOptions,
+      disableDayFn(date) {
+        // let enableListDate = [new Date('2020,9,26').toDateString(), new Date('2020,9,27').toDateString()];//new Date('2018,12,6').toDateString()
+        // меняем false на true отображения тех дней которых еще нет
+        if (enableListDate.includes(date.toDateString())) {
+          return true;
+        }
+        return false;
+      },
+      onSelect(date) {
+        //	window.location.href = formAction(form, date);
+        // Отправляем форму с выбранной датой из datepicker
+        document.getElementById("date").setAttribute("value", date);
+        document.getElementById("submit").click();
+      },
+    });
+  });
+</script>

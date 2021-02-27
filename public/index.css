@@ -1,0 +1,288 @@
+/* partials/navbar.hbs */
+.nav-wrapper {
+  padding: 0 1rem;
+  background-color: #26a69a;
+}
+.sidenav {
+  background-color: #26a69a;
+}
+.sidenav li>a {
+  color:#fff;
+}
+.sidenav li>a>span {
+  padding-left: 14px;
+}
+.sidenav li>a>span.padding-l-10 {
+  padding-left: 10px;
+}
+.margin-t-50 {
+  margin-top:  50px;
+}
+.margin-t-20 {
+  margin-top:  20px;
+}
+.same-width {
+  width: 230px;
+}
+.width-198 {
+  width: 198px;
+}
+/* profile */
+.margin-b-2 {
+  margin-bottom:  2px;
+}
+.margin-top-0
+{
+  margin-top: 0px;
+}
+/* settings/categories.hbs*/
+.btn-null {
+-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border-radius: 0;
+  border: none !important;
+  outline: none !important;
+  background: #FFF;
+}
+a.dropdown-trigger.btn {
+  line-height: 0px;
+  display: inline;
+  text-transform: lowercase; /* строчные буквы */
+  }
+.changeCategoriesDiv
+{
+  border: 1px solid lightgrey;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.changeCategories
+{
+    display: inline-block;
+    width: 130px;
+    margin: 10px;
+}
+[name = a_href_del_settings] {
+  line-height: 0px;
+  display: inline;
+  text-transform: lowercase; /* строчные буквы */
+  }
+/* [name = move_settings]{
+  line-height: 0px;
+  height: 19px;
+  text-transform: lowercase;
+} */
+.very-small-btn{
+  line-height: 0px;
+  height: 19px;
+  text-transform: lowercase;
+}
+ /* categories.hbs */
+/* dayscreate */
+/* editday */
+/* incoming monthview yearview*/
+table {
+  border-collapse: collapse;
+}
+tr.border-top td {
+  border-top: 1pt solid gainsboro;
+}
+.table-border {
+  margin-bottom:  50px;
+  border: 1px solid gainsboro;
+  border-collapse: separate;
+}
+
+.parent-center {
+  text-align: center;
+}
+.child-center {
+  display: inline-block;
+}
+.font-weight-600 {
+  font-weight: 600
+}
+
+@media (max-width: 600px) {
+  .page-name-s {
+    font-size: 1.5rem;
+  }
+  .down-text {
+    font-size: 1rem;
+  }
+  .down-text-2 {
+    font-size: 1rem;
+  }
+  .font-size-15 {
+    font-size: 1.5rem;
+  }
+  .font-size-icon-2r {
+    font-size: 2rem;
+  }
+  .container-border{
+    margin-top:  10px;
+  }
+  .table-border {
+    margin-bottom:  10px;
+  }
+  .margin-t-50 {
+    margin-top:  10px;
+  }
+  .display-none-mb {
+    display:none;
+  }
+}
+
+.vertical-align-b {
+  vertical-align: bottom;
+}
+@media (min-width: 601px) {
+  .display-none-desctop {
+    display: none;
+  }
+  .font-size-icon-2r {
+    font-size: 3rem;
+  }
+  .page-name-s {
+    font-size: 2rem;
+  }
+  .down-text {
+    font-size: 1.5rem;
+  }
+  .down-text-2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+      width: 85%;
+  }
+  .display-none-desctop-993 {
+    display: none;
+  }
+}
+  .align-right {
+    text-align: right;
+  }
+@media only screen and (max-width: 993px) {
+  .display-none-mobile-993 {
+    display: none;
+  }
+  .width-max993-290px {
+    width: 290px;
+    margin: auto;
+    }
+}
+
+/* Во многих файлах */
+/* перенос слов автоматически */
+body 	{
+   word-wrap:break-word;
+  }
+textarea.materialize-textarea {
+  margin: 0 0 0 0;
+ }
+.btn {
+  margin: 4px 4px 4px 4px;
+  flex: 1 0 auto;
+  /*
+  1 - flex-grow (1 значение)
+  0 - flex-shrink (2 значение)
+  auto - flex-basis (3 значение)
+  */
+}
+td, th, .grid-padding {
+  padding: 0px;
+  padding-left: 5px;
+  border-radius: 2px;
+}
+/* connectLocal.hbs , dayscreate, login, singnup, categories  */
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+.flex {
+  display: flex;
+  /* перенос элементов на новую строку flex-flow: wrap;  тоже самое */
+  flex-wrap: wrap;
+  /* flex-flow: wrap; */
+}
+.row {
+  margin-bottom: 0px;
+}
+.row .col {
+  padding-left: 0px;
+  padding-right: 0.25rem;
+}
+.border {
+  border: solid 1px gainsboro;
+}
+.border-l-r {
+  border-left: solid 1px gainsboro;
+  border-right: solid 1px gainsboro;
+}
+.border-b {
+  border-bottom: solid 1px gainsboro;
+}
+.border-t {
+  border-top: solid 1px gainsboro;
+}
+.comment {
+  font-style: italic;
+}
+.margin-b-0 {
+  margin-bottom: 0px;
+}
+.margin-t-b-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.padding-left-20 {
+  padding-left: 20px;
+}
+.input-field.inline input, .input-field.inline .select-dropdown {
+  margin-bottom: 0rem;
+}
+.select_сolor {
+  padding: 0px;
+  margin: 0 auto;
+}
+.row.striped:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+.rowTestColor {
+  background-color: #26a69a;
+}
+.test-push-green {
+  background-color: #3c763d;
+}
+.test-push-red {
+  background-color: red;
+}
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+.margin-bottom-50 {
+  margin-bottom: 50px;
+}
+.bg-color-aquam {
+  background-color: LightCyan;
+}
+
+#buttonTablePie {
+  background-color: #26a69a;
+}
+/* переопределяем свойства списка от materialize для страницы about */
+ul.about-ui-li:not(.browser-default)>li {
+  list-style-type: disc;
+}
+.yearSelect {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

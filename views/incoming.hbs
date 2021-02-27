@@ -1,0 +1,112 @@
+<div class="container container-editday">
+  <div class="page-header center-align">
+    <h4 class="page-name-s"><span class="fa fa-check"></span> Основная</h4>
+  </div>
+
+  <div class="center-align flex">
+    <a class="waves-effect waves-light btn datepicker" id="datepicker">Выбрать день</a>
+    <a href="/dayscreate" class="btn btn-default btn-sm"> Создать день </a>
+    <a href="/monthview" class="btn btn-default btn-sm" id="monthview"> Выбрать месяц </a>
+    <a href="/yearview" class="btn btn-default btn-sm" id="yearview"> Выбрать год </a>
+  </div>
+  <h5 class="center-align">{{newDateView}} </h5>
+  <div class="center-align">
+    <button name="buttonVisible" id="buttonTablePie"><i class="fas fa-chart-pie"></i>
+      <i class="fas fa-table"></i></button>
+    <button name="buttonVisible"><i class="fas fa-chart-pie"></i></button>
+    <button name="buttonVisible"><i class="fas fa-table"></i></button>
+  </div>
+
+  <div id="table">
+    <div class="row border grid-padding">
+      <strong>
+        <div class="col s1">№</div>
+        <div class="col s7 m4">Имя категории</div>
+        <div class="col s4 m2 ">Цена</div>
+        <div class="col m5 display-none-mb">Комментарии</div>
+      </strong>
+    </div>
+    {{#each day.NameCategories}}
+    <div class="row striped border-l-r grid-padding">
+      <div class="col s1">{{@index}}</div>
+      <div class="col s7 m4" style=" color:{{lookup ../day.colorCategories @index}}; ">{{this}}</div>
+      <div class="col s4 m2">{{lookup ../day.costs @index}}</div>
+      <div class="col s11 m5 push-s1 comment">{{lookup ../day.coments @index}}</div>
+    </div>
+    {{/each}}
+    <div class="row border-l-r border-b" style="background-color: WhiteSmoke">
+      <div class="col s1"></div>
+      <div class="col s7 m4">
+        <h5 style=" color: red">Итоговая сумма:</h5>
+      </div>
+      <div class="col s4 m7">
+        <h5 style=" color: red">{{day.allCost}}</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-align flex">
+    <a href="/editday/{{day._id}}" class=" btn waves-effect waves-light btn-small">Редактировать</a>
+    <a href="/incoming/delday/{{day._id}}" class=" btn waves-effect waves-light btn-small"
+      onClick="return window.confirm('Вы действительно хотите удалить день?');"> Удалить
+    </a>
+  </div>
+  <div>
+    <div class=" center-align margin-t-20">
+      <canvas id="myChart" style="display: inline" width="292" height="292"></canvas>
+    </div>
+    <script src="/functionChartHbs.js"></script>
+    <script>
+      const strArrColor = "{{day.colorCategories}}";
+      const strArrName = "{{day.NameCategories}}";
+      const strArrCosts = "{{day.costs}}";
+      // eslint-disable-next-line no-undef
+      document.addEventListener(
+        "DOMContentLoaded",
+        // eslint-disable-next-line no-undef
+        ChartHbs(strArrColor, strArrName, strArrCosts)
+      ); // src="/functionChartHbs.js"
+      document.addEventListener("DOMContentLoaded", () => {
+        const enableListDate = "{{ enableListDate }}";
+        // eslint-disable-next-line prettier/prettier
+        const datepickerOptionsHbs = '{{{datepickerOptions}}}';
+        const datepickerOptions = JSON.parse(datepickerOptionsHbs);
+        datepickerOptions.minDate = new Date(datepickerOptions.minDate); // Json преобразование даты
+        datepickerOptions.maxDate = new Date(datepickerOptions.maxDate);
+        /* global i18n, M */
+        const elems = document.querySelectorAll(".datepicker");
+        // eslint-disable-next-line no-unused-vars
+        const instances = M.Datepicker.init(elems, {
+          i18n,
+          ...datepickerOptions,
+          disableDayFn(date) {
+            // let disableListDate = [new Date('2020,1,26').toDateString(), new Date('2020,1,27').toDateString()];//new Date('2018,12,6').toDateString()
+            // let enableListDate = [new Date('2020,1,26').toDateString(), new Date('2020,1,27').toDateString()];//new Date('2018,12,6').toDateString()
+            if (enableListDate.includes(date.toDateString())) {
+              return false;
+            }
+            return true;
+          },
+          onSelect(date) {
+            // const input = document.getElementById("viewday");
+            window.location.href = `/incoming/dayview/${date}`;
+          },
+        });
+      });
+
+      window.onload = () => {
+        const montview = document.getElementById("monthview");
+        // eslint-disable-next-line func-names
+        montview.onclick = function () {
+          const date = new Date();
+          montview.setAttribute("href", `${this.getAttribute("href")}/${date}`);
+        };
+
+        const yearview = document.getElementById("yearview");
+        // eslint-disable-next-line func-names
+        yearview.onclick = function () {
+          const date = new Date();
+          yearview.setAttribute("href", `${this.getAttribute("href")}/${date}`);
+        };
+      };
+    </script>

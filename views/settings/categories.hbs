@@ -1,0 +1,160 @@
+<div class="container center-align">
+  <div class="page-header">
+    <h4 class="page-name-s "><i class="material-icons prefix font-size-icon-2r vertical-align-b">category</i> Настройки
+    </h4>
+  </div>
+  <div class="width-max993-290px">
+    {{#if errors.length  }}
+    <h5>
+      <div class="alert alert-danger  pink-text center-align" id="errors">{{errors}} </div>
+    </h5>
+    {{/if}}
+    {{#if message.length  }}
+    <h6>
+      <div class="alert alert-danger center-align">{{message}} </div>
+    </h6>
+    {{/if}}
+    <div class="row  table-border display-none-mobile-993 ">
+      <div class="col s1 "> № </div>
+      <div class="col s11 m11 l3 "> Имя категории </div>
+      <div class="col s11 m11 offset-s1 offset-m1 l3 "> </div>
+      <div class="col s11 m11 offset-s1 offset-m1 l1 ">№ Куда </div>
+      <div class="col s11 m11 offset-s1 offset-m1 l2 "> </div>
+      <div class="col s11 m11 offset-s1 offset-m1 l2 "> </div>
+    </div>
+    <div class="border-b">
+      {{#each user.calc.costs.categories.name}}
+      <div class="row striped border-t border-l-r margin-t-b-0 ">
+        <div class="col s1 ">
+          {{@index}}
+        </div>
+        <div class="col s11 m11 l3">
+          <span style="color:{{lookup ../user.calc.costs.categories.color @index}}"> {{this}} </span>
+        </div>
+
+        <div class="col s11 m11 offset-s1 offset-m1 l3 ">
+          <div class="center-align">
+            <select class="browser-default select_сolor" id="select_сolor_{{@index}}" name='selected_color'
+              style=" color:{{lookup ../user.calc.costs.categories.color @index}}; width: 100px; height: 26px;">
+              {{#each ../user.calc.costs.categories.choiceColor}}
+              <option {{#if (isSelected this (lookup ../../user.calc.costs.categories.color @../index) )  }} selected
+                {{/if}} style="color:{{this}}; width: 100px; height: 26px;" id="newcolor_{{@index}}">
+                {{this}}
+              </option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="col s11 m11 offset-s1 offset-m1 l1">
+          <form action="/settings/categories/movecategories" method="post">
+            <input type="hidden" name="current" value={{@index}}>
+            <input type="number" placeholder="№" class="form-control margin-b-0 validate " pattern="[0-9]{2}" required
+              min="0" max="{{ arrlength ../user.calc.costs.categories.name}}" name="inputMove" id="inputMove_{{@index}}"
+              style="height: 1rem; width: 36px">
+            <label class="display-none-desctop-993" for="inputMove_{{@index}}">Куда</label>
+        </div>
+        <div class="col s11 m11 offset-s1 offset-m1 l2">
+          <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+          <button type="submit" class="waves-effect waves-light btn-small very-small-btn "
+            name="move_settings">Переместить</button>
+          </form>
+        </div>
+        <div class="col s11 m11 offset-s1 offset-m1 l2">
+          <form action="/settings/categories/del" method="post">
+            <input type="hidden" name="idcategor" value={{@index}}>
+            <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+            <button type="submit" class="waves-effect waves-light btn-small very-small-btn "
+              onClick="return window.confirm('Вы действительно хотите удалить категорию?');">Удалить</button>
+          </form>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+  </div>
+
+  <div class="margin-top">
+    <h6 class="center-align">Добавить новую категорию</h6>
+  </div>
+  <form action="/settings/categories/newcategories" method="post">
+    <div class="changeCategoriesDiv">
+      <input type="text" placeholder="введите имя категории" class=" validate" name="nameCategories" id="nameCategories"
+        maxlength="128" data-length="128" required>
+      <h6 class="changeCategories"> Выберите цвет</h6>
+      <div class="changeCategories">
+        <select class="browser-default" id="select_Newcategories" name='selected'
+          style=" color:{{lookup user.calc.costs.categories.choiceColor 0}}; width: 100px; height: 32.4px;">
+          {{#each user.calc.costs.categories.choiceColor}}
+          <option style="color:{{this}}; height: 32.4px; width: 100px;" id="newCategories_{{@index}}" value="{{this}}">
+            {{this}}
+          </option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="changeCategories ">
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+        <button type="submit" class="waves-effect waves-light btn-small" id="button_push">Добавить</button>
+      </div>
+  </form>
+</div>
+</div>
+
+<script>
+  // eslint-disable-next-line func-names
+  window.onload = function () {
+    // создаем маасив строк из входной строки
+    const categoriesName = "{{user.calc.costs.categories.name}}".split(",");
+    // изменяем цвет выбранной в select категории
+    // eslint-disable-next-line func-names
+    document.getElementById("select_Newcategories").onchange = function () {
+      const { selectedIndex } = document.getElementById(
+        "select_Newcategories"
+      ).options;
+      this.setAttribute(
+        "style",
+        document
+          .getElementById(`newCategories_${selectedIndex}`)
+          .getAttribute("style")
+      );
+    };
+    // eslint-disable-next-line func-names
+    document.getElementById("button_push").onclick = function () {
+      // определяем соответствие индекса массива в основном массиве дефолтных категорий categoriesname формируется на бэке
+      const nameCategories = document.getElementById("nameCategories").value;
+      // Узнаем есть ли уже такое название категории
+      const includeCategories = categoriesName.includes(nameCategories);
+      if (includeCategories) {
+        const errors = document.getElementById("errors");
+        errors.append("Такое имя уже существует");
+        // отключаем запрос на сервер
+        // не работает такое отключение запроса так как это не ссылка, а кнопка уже
+        // this.setAttribute('href', 'javascript: void(0)');
+        // отключаем запрос на сервер
+        // eslint-disable-next-line no-restricted-globals
+        event.preventDefault();
+      }
+    };
+    const names = "{{user.calc.costs.categories.name}}".split(",");
+    names.forEach((name, index) => {
+      const select = document.getElementById(`select_сolor_${index}`);
+      select.onchange = () => {
+        const { selectedIndex } = select.options;
+        const selected = select.options[selectedIndex].value;
+        select.setAttribute(
+          "style",
+          select.options[selectedIndex].getAttribute("style")
+        );
+        const form = document.createElement("form");
+        form.method = "post";
+        form.action = "/settings/categories/colorCategories";
+        form.innerHTML = `<input type="hidden" name="idCategories" value=${index}>
+              <input type="hidden" name="colorCategories" value=${selected}>
+              <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+            `;
+        document.body.append(form);
+        form.submit();
+      };
+    });
+  };
+</script>

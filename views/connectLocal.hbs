@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h4 class="page-name-s "><i
+        class="material-icons prefix font-size-icon-2r page-name-s vertical-align-b">account_circle</i> Добавить
+      аккаунт по паролю </h4>
+    {{#if errors.length  }}
+    <div class="alert alert-danger  pink-text center-align">{{errors}} </div>
+    {{/if}}
+    <form action="/connect/local" method="post">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password">
+      </div>
+      <input type="hidden" name="_csrf" value="{{csrf}}">
+      <button type="submit" class="btn btn-warning btn-lg">Добавить аккаунт</button>
+    </form>
+
+    <hr>
+
+    <p><a href="/profile">Go back to profile</a></p>
+
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<nav>
+  <div class="nav-wrapper">
+    <ul id="slide-out" class="sidenav">
+      {{#if isHome }}
+      <li class="active"><a href="/"><span class="fa fa-home"></span><span class="padding-l-10">Главная</span></a></li>
+      {{else}}
+      <li><a href="/"><span class="fa fa-home"></span><span class="padding-l-10"> Главная</span></a></li>
+      {{/if}}
+
+      {{#if isRegister }}
+      <li class="active"><a href="/signup"><span class="fa fa-sign-in"></span><span>Регистрация</span></a></li>
+      {{else}}
+      <li><a href="/signup"><span class="fa fa-sign-in"></span><span>Регистрация</span></a></li>
+      {{/if}}
+
+      {{#if isAbout}}
+      <li class="active"><a href="/about"><span class="fa fa-info-circle"></span> <span>О проекте</span></a></li>
+      {{else}}
+      <li><a href="/about"><span class="fa fa-info-circle"></span><span>О проекте</span></a></li>
+      {{/if}}
+
+      {{#if isAuth}}
+      {{#if isIncoming}}
+      <li class="active"><a href="/incoming"><span class="fa fa-check"></span><span>Основная</span></a></li>
+      {{else}}
+      <li><a href="/incoming"><span class="fa fa-check"></span><span>Основная</span></a></li>
+      {{/if}}
+
+      {{#if isSettings}}
+      <li class="active"><a href="/settings"><span class="fa fa-cogs"></span><span
+            class="padding-l-10">Настройки</span></a></li>
+      {{else}}
+      <li><a href="/settings"><span class="fa fa-cogs"></span><span class="padding-l-10">Настройки</span></a></li>
+      {{/if}}
+
+      <li><a href="/logout"><span class="fa fa-times-circle-o"></span><span>Выйти</span></a></li>
+
+      {{else}}
+
+      {{#if isLogin}}
+      <li class="active"><a href="/login"><span class="fa fa-external-link"></span><span
+            class="padding-l-10">Войти</span></a></li>
+      {{else}}
+      <li><a href="/login"><span class="fa fa-external-link"></span><span class="padding-l-10">Войти</span></a></li>
+      {{/if}}
+
+      {{/if}}
+
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+    <a href="" class="brand-logo">HomeMoneyCalc</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+      {{#if isHome }}
+      <li class="active"> <a href="/">Главная</a></li>
+      {{else}}
+      <li><a href="/">Главная</a></li>
+      {{/if}}
+
+      {{#if isRegister }}
+      <li class="active"><a href="/signup">Регистрация</a></li>
+      {{else}}
+      <li><a href="/signup">Регистрация</a></li>
+      {{/if}}
+
+      {{#if isAbout}}
+      <li class="active"><a href="/about"> О проекте</a></li>
+      {{else}}
+      <li><a href="/about">О проекте</a></li>
+      {{/if}}
+
+      {{#if isAuth}}
+      {{#if isIncoming}}
+      <li class="active"><a href="/incoming">Основная</a></li>
+      {{else}}
+      <li><a href="/incoming">Основная</a></li>
+      {{/if}}
+
+
+      {{#if isSettings}}
+      <li class="active"><a href="/settings">Настройки</a></li>
+      {{else}}
+      <li><a href="/settings">Настройки</a></li>
+      {{/if}}
+
+      <li><a href="/logout">Выйти</a></li>
+      {{else}}
+
+      {{#if isLogin}}
+      <li class="active"><a href="/login">Войти</a></li>
+      {{else}}
+      <li><a href="/login">Войти</a></li>
+      {{/if}}
+
+      {{/if}}
+
+    </ul>
+  </div>
+</nav>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const elems = document.querySelectorAll(".sidenav");
+    /* global M */
+    const instances = M.Sidenav.init(elems);
+  });
+</script>

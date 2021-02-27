@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h4 class="page-name-s"><span class="fa fa-sign-in"></span> Login</h4>
+    {{#if errors.length  }}
+    <div class="alert alert-danger  pink-text center-align">{{errors}} </div>
+    {{/if}}
+    <form action="/login" method="post">
+      <div class="input-field">
+        <input type="email" class="validate" name="email" maxlength="32" data-length="32" required>
+        <label for="email">Email</label>
+        <span class="helper-text" data-error="Введите email"></span>
+      </div>
+      <div class="input-field">
+        <input type="password" class="validate" id="password" name="password" maxlength="32" data-length="32" required>
+        <label for="password">Password</label>
+        <span class="helper-text" data-error="Введите пароль"></span>
+      </div>
+      <input type="hidden" name="_csrf" value="{{csrf}}">
+      <button type="submit" class="btn btn-warning btn-lg">Login</button>
+    </form>
+
+    <hr>
+
+    <p>Нужен аккаунт? <a href="/signup">Создать аккаунт</a></p>
+    <p><a href="/reset">Забыли пароль?</a></p>
+    <p>или идем на <a href="/">главную</a></p>

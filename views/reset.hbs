@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+
+    <h4 class="page-name-s"><span class="fa fa-sign-in"></span> Забыли пароль ?</h4>
+
+    {{#if errors.length  }}
+    <div class="alert alert-danger  pink-text center-align">{{errors}} </div>
+    {{/if}}
+    {{#if message.length  }}
+    <div class="alert alert-danger">{{message}} </div>
+    {{/if}}
+
+    <!-- LOGIN FORM -->
+
+    <form action="/reset" method="post">
+      <div class="input-field">
+        <input type="email" class="validate" name="email" maxlength="32" data-length="32" required>
+        <label for="email">Email</label>
+        <span class="helper-text" data-error="Введите email"></span>
+      </div>
+      <input type="hidden" name="_csrf" value="{{csrf}}">
+      <button type="submit" class="btn btn-warning btn-lg">Сбросить</button>
+    </form>
+
+    <hr>
+    <p>или идем на <a href="/">главную</a></p>

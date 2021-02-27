@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "mochaTesting/thisProject/categoriesname.json",
+    "mochaTesting/thisProject/day.json",
+    "mochaTesting/thisProject/days.json",
+    "mochaTesting/thisProject/defaultcolor.json"
+  ]
+}

@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="page-header center-align">
+    <h4 class="page-name-s"><span class="fa fa-calendar"></span> Просмотр года</h4>
+  </div>
+  <h5 class="center-align">{{monthView}}</h5>
+  <div class="center-align">
+    <button name="buttonVisible" id="buttonTablePie"><i class="fas fa-chart-pie"></i>
+      <i class="fas fa-table"></i></button>
+    <button name="buttonVisible"><i class="fas fa-chart-pie"></i></button>
+    <button name="buttonVisible"><i class="fas fa-table"></i></button>
+  </div>
+  <center>
+    <select class="browser-default yearSelect" id="yearSelect"
+      style=" color:{{lookup user.calc.costs.categories.choiceColor 0}}; width: 130px;">
+      <option disabled selected>Выберите год</option>
+      {{#each daysAllMonthYYYYDyble}}
+      <option value="{{this}}">
+        {{this}}
+      </option>
+      {{/each}}
+    </select>
+  </center>
+  <div class="parent-center">
+    <div class="child-center">
+      <table class="striped table-border" id="table">
+        <thead>
+          <tr>
+            <th> № </th>
+            <th> Имя категории </th>
+            <th> Цена </th>
+            <th> <strong> % </strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each arrName}}
+          <tr>
+            <td>
+              {{@index}}
+            </td>
+            <td>
+              <span style=" color:{{lookup ../arrColor @index}}"> {{this}} </span>
+            </td>
+            <td nowrap>
+              {{lookup ../arrCosts @index}}
+            </td>
+            <td nowrap>
+              {{lookup ../arrPercent @index}}
+            </td>
+          </tr>
+          {{/each}}
+          <tr class="border-top">
+            <td></td>
+            <td>
+              <h5 style=" color: red">Итоговая сумма:</h5>
+            </td>
+            <td>
+              <h5 style=" color: red">{{allCost}}</h5>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class=" center-align margin-t-20">
+    <canvas id="myChart" style="display: inline" width="292" height="292"></canvas>
+  </div>
+  <script src="/functionChartHbs.js"></script>
+  <script>
+    const strArrColor = "{{arrColor}}";
+    const strArrName = "{{arrName}}";
+    const strArrCosts = "{{arrCosts}}";
+    // eslint-disable-next-line no-undef
+    document.addEventListener(
+      "DOMContentLoaded",
+      // eslint-disable-next-line no-undef
+      ChartHbs(strArrColor, strArrName, strArrCosts)
+    ); // src="/functionChartHbs.js"
+
+    window.onload = () => {
+      // Выбор определенного года из списка возможных (в которых существуют записанные дни на сервере)
+      const yearSelect = document.getElementById("yearSelect");
+      yearSelect.addEventListener("change", () => {
+        window.location.href = `/yearview/year/${yearSelect.value}`;
+      });
+    };
+  </script>

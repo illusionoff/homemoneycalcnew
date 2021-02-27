@@ -1,0 +1,133 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    // "es6": true,
+    "node": true
+    // "amd": true
+  },
+  "plugins": [
+    "html",
+    "node",
+    "prettier",
+    "mocha"
+    // "hbs"
+  ],
+  "settings": {
+    // "html/indent": "0",
+    // "html/report-bad-indent": "warn"
+    // "html/indent": "0" // indentation is one tab at the beginning of the line.
+    // "html/report-bad-indent": "warn"
+    // "html/no-tabs": 0 // indentation is one tab at the beginning of the line.
+  },
+  // "settings": {
+  //     "html/html-extensions": [
+  //         ".html",
+  //         ".hbs"
+  //     ] // consider .html and .we files as HTML
+  // },
+  // "extends": "eslint:recommended",
+  "extends": [
+    // "eslint:recommended",
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    // "prettier/html"
+    "plugin:node/recommended",
+    "plugin:mocha/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "script"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "no-return-assign": "off",
+    "no-param-reassign": "off",
+    "consistent-return": "off", // отмена контроля return
+    "no-shadow": "off", // отмена контроля одинаковых имен глобальных и лок переменных
+    // {
+    //     "singleQuote": true,
+    //     "parser": "flow"
+    // }
+    // "error"
+    // {
+    //     "endOfLine": "auto"
+    //     // "useTabs": false
+    // }
+    // "error", {}, {
+    //     "usePrettierrc": false
+    //   }
+    // "linebreak-style": 0,
+    // "linebreak-style": ["error", process.env.NODE_ENV === "prod" ? "unix" : "windows"],
+    "global-require": 0,
+    // "no-tabs": ["error", {"allowIndentationTabs": true}],
+    // "no-console": [
+    //     "error"
+    // ],
+    // "disallowTabs": false,
+    // "allowIndentationTabs": false,
+    // "no-tabs": 0
+    // "indent": 0
+    // "indent": [2,"tab"],
+    // "indent": [
+    //     "error",
+    //     "tab"
+    // ],
+    // "indent": [
+    //     "error",
+    //     "2"
+    // ],
+    // "indent": [
+    //     2,
+    //     2
+    // ],
+    // "semi": [
+    //     "error",
+    //     "always"
+    // ],
+    // "quotes": [
+    //     "error",
+    //     "double"
+    // ],
+    // "no-inner-declarations": 0,
+    "node/exports-style": [
+      "error",
+      "module.exports"
+    ],
+    "node/file-extension-in-import": [
+      "error",
+      "always"
+    ],
+    "node/prefer-global/buffer": [
+      "error",
+      "always"
+    ],
+    // "node/prefer-global/console": [
+    //     "error",
+    //     "always"
+    // ],
+    "node/prefer-global/process": [
+      "error",
+      "always"
+    ],
+    "node/prefer-global/url-search-params": [
+      "error",
+      "always"
+    ],
+    "node/prefer-global/url": [
+      "error",
+      "always"
+    ],
+    "node/prefer-promises/dns": "error",
+    "node/prefer-promises/fs": "error"
+    // "linebreak-style": [
+    //     "error",
+    //     "unix"
+    // ],
+    // "linebreak-style": [
+    //     "error",
+    //     "windows"
+    // ],
+    // "eslint-disable eslint linebreak-style
+  }
+}
