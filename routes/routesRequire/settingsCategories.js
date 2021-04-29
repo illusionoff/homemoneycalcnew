@@ -183,8 +183,8 @@ module.exports = (app, isLoggedIn) => {
     }
   );
   // 	// LOGOUT ==============================
-  app.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
-  });
+  // app.get("/logout", (req, res) => {
+  //   req.logout();
+  //   return res.redirect("/");
+  // });
 };
