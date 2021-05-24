@@ -157,11 +157,11 @@ module.exports.monthOrYearView = (
       return colorMonth[index];
     });
     // Если нет дней в месяце
-    if (!daysMonth.length) {
-      // console.log('Дней еще нет в этом месяце');
-      // res.redirect('/incoming');
-      return null;
-    }
+    // if (!daysMonth.length) {
+    // console.log('Дней еще нет в этом месяце');
+    // res.redirect('/incoming');
+    //   return null;
+    // }
     return {
       arrName,
       arrColor,
