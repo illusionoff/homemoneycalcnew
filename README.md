@@ -76,10 +76,10 @@ eslint-plugin-prettier
 ----
 * Проверяем функцию defaultView  изменение цвета категорий в соотвествии с ```default = req.user.calc.costs.categories.name```
 [testDefaultView.js](https://github.com/illusionoff/homemoneycalc/blob/main/mochaTesting/thisProject/defaultView/testDefaultView.js)
-Запуск: npm run test2
+Запуск: "npm run test2"
 
 * Проверяем функцию monthOrYearView  вывода информации по выбранному месяцу или году в виде массивов для отображения в талице на frontend
 [testMonthOrYearView.js](https://github.com/illusionoff/homemoneycalc/blob/main/mochaTesting/thisProject/monthOrYearView/testMonthOrYearView.js)
-Запуск: npm test
+Запуск: "npm test"
 
 [Вверх](#anchor)
