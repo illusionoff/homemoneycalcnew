@@ -63,7 +63,7 @@ module.exports = (passport) => {
   //     costs: {
   //       days: {
   //         date: new Date(),
-  //         NameCategories: "Коммунальны услуги",
+  //         NameCategories: "Коммунальные услуги",
   //         colorCategories: "green",
   //         costs: 68,
   //       },

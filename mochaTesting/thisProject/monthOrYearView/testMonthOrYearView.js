@@ -13,7 +13,7 @@ const fileContentYear = fs.readFileSync(
 );
 const defaultName = [
   "Жилье",
-  "Коммунальны услуги",
+  "Коммунальные услуги",
   "Продукты",
   "Проезд",
   "Интернет",
@@ -21,9 +21,9 @@ const defaultName = [
   "Одежда",
   "Медикаменты",
   "Хозяйственные расходы",
-  "Покупка техники",
+  "Техника",
   "Развлечения и отдых",
-  "Подарки к дню рождения",
+  "День рождения",
   "Дивиденты",
   "Заработная плата",
   "Прочее",
@@ -78,7 +78,7 @@ describe("monthOrYearView for month test", function () {
       defaultColor
     );
     assert.deepStrictEqual(monthViewFunc, {
-      arrName: ["Жилье", "Коммунальны услуги", "Продукты", "Проезд"],
+      arrName: ["Жилье", "Коммунальные услуги", "Продукты", "Проезд"],
       arrColor: ["aqua", "teal", "blue", "navy"],
       arrCosts: [2, 4, 6, 8],
       allCost: 20,
@@ -99,7 +99,7 @@ describe("monthOrYearView for month test", function () {
       defaultColor
     );
     assert.deepStrictEqual(monthViewFunc, {
-      arrName: ["Жилье", "Коммунальны услуги", "Продукты", "Проезд"],
+      arrName: ["Жилье", "Коммунальные услуги", "Продукты", "Проезд"],
       arrColor: ["aqua", "teal", "blue", "navy"],
       arrCosts: [2, 4, 6, 8],
       allCost: 20,
@@ -145,7 +145,7 @@ describe("monthOrYearView for year test", function () {
     assert.deepStrictEqual(monthViewFunc, {
       arrName: [
         "Жилье",
-        "Коммунальны услуги",
+        "Коммунальные услуги",
         "Продукты",
         "Проезд",
         "Развлечения и отдых",
@@ -193,7 +193,7 @@ describe("monthOrYearView for year test", function () {
     assert.deepStrictEqual(monthViewFunc, {
       arrName: [
         "Жилье",
-        "Коммунальны услуги",
+        "Коммунальные услуги",
         "Продукты",
         "Проезд",
         "Развлечения и отдых",

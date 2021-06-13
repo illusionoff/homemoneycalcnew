@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha mochaTesting/thisProject/monthOrYearView/testMonthOrYearView.js",
+    "test2": "mocha mochaTesting/thisProject/defaultView/testDefaultView.js",
     "start": "nodemon index.js"
   },
   "author": "illusion",

@@ -18,6 +18,7 @@ const Helpers = () => {
     dateNew: () => new Date(),
     arrlength: (array) => array.length - 1,
     isSelected: (value, selectedValue) => selectedValue === value,
+    indexPlusOne: (index) => index + 1,
   };
   return helper;
 };

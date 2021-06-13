@@ -20,9 +20,9 @@ HomeMoneyCalc
 * Восстановление забытого пароля через Email
 * Создание пользовательских категорий расходов и доходов, задание цвета категорий
 * Вывод статистики по расходам / доходам за день, месяц, год
-* Возможность редактирования уже имеющихся данных
+* Возможность редактирования имеющихся данных
 * Выбор способа отображения информации (диаграмма, таблица, диаграмма и таблица)
-* Изменение порядка следования категорий
+* Изменение порядка следования различных категорий
 
 
 
@@ -46,7 +46,7 @@ helmet|	защита приложений express через различные 
 moment-timezone|	поддержка часовых поясов IANA для Moment.js
 mongoose|	ODM ждя MongoDB
 nodemailer|	отправка почты
-passport|	авторизации, решистрации через соцсети и т.д.
+passport|	авторизация, решистрация через соцсети и т.д.
 underscore|	библиотека функций. Использую для проверки на корректную дату _.isDate(date)
 eslint|	выявление ошибок в коде
 prettier|	форматирование кода и автоформатирование при сохранении
@@ -76,9 +76,10 @@ eslint-plugin-prettier
 ----
 * Проверяем функцию defaultView  изменение цвета категорий в соотвествии с ```default = req.user.calc.costs.categories.name```
 [testDefaultView.js](https://github.com/illusionoff/homemoneycalc/blob/main/mochaTesting/thisProject/defaultView/testDefaultView.js)
+Запуск: npm run test2
 
 * Проверяем функцию monthOrYearView  вывода информации по выбранному месяцу или году в виде массивов для отображения в талице на frontend
 [testMonthOrYearView.js](https://github.com/illusionoff/homemoneycalc/blob/main/mochaTesting/thisProject/monthOrYearView/testMonthOrYearView.js)
-
+Запуск: npm test
 
 [Вверх](#anchor)

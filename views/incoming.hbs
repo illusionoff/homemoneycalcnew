@@ -28,7 +28,7 @@
     </div>
     {{#each day.NameCategories}}
     <div class="row striped border-l-r grid-padding">
-      <div class="col s1">{{@index}}</div>
+      <div class="col s1">{{indexPlusOne @index}}</div>
       <div class="col s7 m4" style=" color:{{lookup ../day.colorCategories @index}}; ">{{this}}</div>
       <div class="col s4 m2">{{lookup ../day.costs @index}}</div>
       <div class="col s11 m5 push-s1 comment">{{lookup ../day.coments @index}}</div>
