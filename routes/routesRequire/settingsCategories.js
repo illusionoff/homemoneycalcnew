@@ -155,7 +155,9 @@ module.exports = (app, isLoggedIn) => {
           return res.status(422).redirect("/settings/categories");
         }
         const { current } = req.body;
-        const { inputMove } = req.body;
+        let { inputMove } = req.body;
+        // eslint-disable-next-line no-plusplus
+        inputMove--; // отнимаем 1 дляиз-за различия начала отсчета в массивах с 0 для пользователя с 1
         const { user } = req;
         await user.updateOne(
           {

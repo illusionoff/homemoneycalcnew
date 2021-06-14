@@ -26,7 +26,7 @@
       {{#each user.calc.costs.categories.name}}
       <div class="row striped border-t border-l-r margin-t-b-0 ">
         <div class="col s1 ">
-          {{@index}}
+          {{indexPlusOne @index}}
         </div>
         <div class="col s11 m11 l3">
           <span style="color:{{lookup ../user.calc.costs.categories.color @index}}"> {{this}} </span>
@@ -49,7 +49,7 @@
           <form action="/settings/categories/movecategories" method="post">
             <input type="hidden" name="current" value={{@index}}>
             <input type="number" placeholder="№" class="form-control margin-b-0 validate " pattern="[0-9]{2}" required
-              min="0" max="{{ arrlength ../user.calc.costs.categories.name}}" name="inputMove" id="inputMove_{{@index}}"
+              min="1" max="{{ ../user.calc.costs.categories.name.length}}" name="inputMove" id="inputMove_{{@index}}"
               style="height: 1rem; width: 36px">
             <label class="display-none-desctop-993" for="inputMove_{{@index}}">Куда</label>
         </div>
