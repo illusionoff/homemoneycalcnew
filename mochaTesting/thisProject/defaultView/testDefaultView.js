@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 // Проверяем функцию defaultView  изменение цвета категорий в соотвествии с default = req.user.calc.costs.categories.name
 const assert = require("assert").strict;
 const fs = require("fs");

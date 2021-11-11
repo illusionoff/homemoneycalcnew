@@ -170,9 +170,7 @@ module.exports = (passport) => {
                 // user.local.password = user.generateHash(password);
                 await user.save(async (err) => {
                   if (err) throw err;
-
                   await RegisterSendMail(transporter, email, req, user, done);
-
                   return done(null, user);
                 });
               }
@@ -187,9 +185,7 @@ module.exports = (passport) => {
                 // Object.assign(newUser, TestCalcObj); // Заполнение данных calc
                 await user.save(async (err) => {
                   if (err) throw err;
-
                   await RegisterSendMail(transporter, email, req, user, done);
-
                   return done(null, user);
                 });
               }
@@ -283,8 +279,6 @@ module.exports = (passport) => {
           // eslint-disable-next-line no-console
           console.log(e);
         }
-
-        // });
       }
     )
   );

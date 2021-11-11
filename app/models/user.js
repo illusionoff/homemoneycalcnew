@@ -113,8 +113,7 @@ const userSchema = mongoose.Schema({
   },
 });
 
-// eslint-disable-next-line func-names
-userSchema.pre("save", function (next) {
+userSchema.pre("save", (next) => {
   //  this.__v === undefined значение при создании документа
   // eslint-disable-next-line no-underscore-dangle
   if (this.calc.costs.categories.name.length === 0 && this.__v === undefined) {

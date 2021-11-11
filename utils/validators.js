@@ -8,7 +8,9 @@ module.exports.registerValidators = [
     .isEmail()
     .withMessage("Введите корректный email")
     .isLength({ min: 5, max: 32 })
-    .withMessage("Слишком длинный Email больше 32 символов или слишком короткий, меньше 5 символов!")
+    .withMessage(
+      "Слишком длинный Email больше 32 символов или слишком короткий, меньше 5 символов!"
+    )
     .normalizeEmail(),
   // .custom((value) => {
   //   return User.findOne({ "local.email": value }).then((user) => {
