@@ -44,7 +44,7 @@ express-validator|	валидация форм
 winston|	логирование
 helmet|	защита приложений express через различные заголовки HTTP
 moment-timezone|	поддержка часовых поясов IANA для Moment.js
-mongoose|	ODM ждя MongoDB
+mongoose|	ODM для MongoDB
 nodemailer|	отправка почты
 passport|	авторизация, решистрация через соцсети и т.д.
 underscore|	библиотека функций. Использую для проверки на корректную дату _.isDate(date)
