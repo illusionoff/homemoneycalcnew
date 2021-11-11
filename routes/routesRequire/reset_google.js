@@ -38,8 +38,10 @@ module.exports = (app) => {
           );
           await transporter.sendMail(
             resetEmail(candidate.local.email, token),
-            function (err, info) {
+            (err, info) => {
+              // eslint-disable-next-line no-console
               if (err) console.log("transporter.sendMail err:", err);
+              // eslint-disable-next-line no-console
               else console.log("transporter.sendMail info:", info);
             }
           );
