@@ -14,38 +14,26 @@
       <div class="alert alert-danger center-align">{{message}} </div>
     </h6>
     {{/if}}
-    <div class="row  table-border display-none-mobile-993 ">
+    {{!-- <div class="row  table-border display-none-mobile-993 ">
       <div class="col s1 "> № </div>
       <div class="col s11 m11 l3 "> Имя категории </div>
-      <div class="col s11 m11 offset-s1 offset-m1 l3 "> </div>
-      <div class="col s11 m11 offset-s1 offset-m1 l1 ">№ Куда </div>
-      <div class="col s11 m11 offset-s1 offset-m1 l2 "> </div>
-      <div class="col s11 m11 offset-s1 offset-m1 l2 "> </div>
-    </div>
+      <div class="col s6 m6  l3 "> </div>
+      <div class="col s6 m6  ">№ Куда </div>
+      <div class="col s12 m12 "></div>
+      <div class="col s6 m6  l2 "> </div>
+      <div class="col s6 m6  l2 "> </div>
+    </div> --}}
     <div class="border-b">
       {{#each user.calc.costs.categories.name}}
       <div class="row striped border-t border-l-r margin-t-b-0 ">
-        <div class="col s1 ">
+        <div class="col s1 m1 l1 ">
           {{indexPlusOne @index}}
         </div>
         <div class="col s11 m11 l3">
           <span style="color:{{lookup ../user.calc.costs.categories.color @index}}"> {{this}} </span>
         </div>
 
-        <div class="col s11 m11 offset-s1 offset-m1 l3 ">
-          <div class="center-align">
-            <select class="browser-default select_сolor" id="select_сolor_{{@index}}" name='selected_color'
-              style=" color:{{lookup ../user.calc.costs.categories.color @index}}; width: 100px; height: 26px;">
-              {{#each ../user.calc.costs.categories.choiceColor}}
-              <option {{#if (isSelected this (lookup ../../user.calc.costs.categories.color @../index) )  }} selected
-                {{/if}} style="color:{{this}}; width: 100px; height: 26px;" id="newcolor_{{@index}}">
-                {{this}}
-              </option>
-              {{/each}}
-            </select>
-          </div>
-        </div>
-        <div class="col s11 m11 offset-s1 offset-m1 l1">
+        <div class="col s6 m6 l1">
           <form action="/settings/categories/movecategories" method="post">
             <input type="hidden" name="current" value={{@index}}>
             <input type="number" placeholder="№" class="form-control margin-b-0 validate " pattern="[0-9]{2}" required
@@ -53,13 +41,31 @@
               style="height: 1rem; width: 36px">
             <label class="display-none-desctop-993" for="inputMove_{{@index}}">Куда</label>
         </div>
-        <div class="col s11 m11 offset-s1 offset-m1 l2">
+
+        <div class="col s6 m6 l2">
           <input type="hidden" name="_csrf" value="{{@root.csrf}}">
           <button type="submit" class="waves-effect waves-light btn-small very-small-btn "
             name="move_settings">Переместить</button>
           </form>
         </div>
-        <div class="col s11 m11 offset-s1 offset-m1 l2">
+
+        <div class="col s12 m12 l1"></div>
+
+        <div class="col s6 m6 l2 ">
+          {{!-- <div class="center-align"> --}}
+          <select class="browser-default select_сolor" id="select_сolor_{{@index}}" name='selected_color'
+            style=" color:{{lookup ../user.calc.costs.categories.color @index}}; width: 80px; height: 26px;">
+            {{#each ../user.calc.costs.categories.choiceColor}}
+            <option {{#if (isSelected this (lookup ../../user.calc.costs.categories.color @../index) )  }} selected
+              {{/if}} style="color:{{this}}; width: 80px; height: 26px;" id="newcolor_{{@index}}">
+              {{this}}
+            </option>
+            {{/each}}
+          </select>
+          {{!-- </div> --}}
+        </div>
+
+        <div class="col s6 m6 l2">
           <form action="/settings/categories/del" method="post">
             <input type="hidden" name="idcategor" value={{@index}}>
             <input type="hidden" name="_csrf" value="{{@root.csrf}}">
@@ -67,6 +73,7 @@
               onClick="return window.confirm('Вы действительно хотите удалить категорию?');">Удалить</button>
           </form>
         </div>
+
       </div>
       {{/each}}
     </div>

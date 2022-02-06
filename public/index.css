@@ -5,6 +5,7 @@
 }
 .sidenav {
   background-color: #26a69a;
+  width: 200px;
 }
 .sidenav li>a {
   color:#fff;

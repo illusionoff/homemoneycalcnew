@@ -86,60 +86,6 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(csrfUse);
 
-// routes ======================================================================
-// app.use(
-//   helmet({
-// 		contentSecurityPolicy: false, // не работает с картинками fontawesome
-// 		// dnsPrefetchControl: false,
-// 		// expectCt: false,
-// 		// frameguard: false,
-// 		// hidePoweredBy: false,
-// 		// hsts: false,
-// 		// ieNoOpen: false,
-// 		// noSniff: false,
-// 		// permittedCrossDomainPolicies: false,
-// 		// referrerPolicy: false,
-// 		// xssFilter: false
-//   })
-// );
-// return helmet.contentSecurityPolicy({
-//     directives: {
-//       defaultSrc: trusted,
-//       scriptSrc: [
-//         "'unsafe-eval'",
-//         "'unsafe-inline'",
-//         `nonce-${nonce}`,
-//         'https://www.googletagmanager.com',
-//         '*.googletagmanager.com',
-//       ].concat(trusted),
-//       styleSrc: [
-//         "'unsafe-inline'",
-//         '*.gstatic.com',
-//         '*.googleapis.com',
-//         'https://*.typography.com',
-//       ].concat(trusted),
-//       frameSrc: [
-//         '*.stripe.com',
-//       ].concat(trusted),
-//       fontSrc: [
-//         '*.cloudflare.com',
-//         'https://*.cloudflare.com',
-//         '*.bootstrapcdn.com',
-//         '*.googleapis.com',
-//         '*.gstatic.com',
-//         'data',
-//       ].concat(trusted),
-//       imgSrc: [
-//         'www.googletagmanager.com',
-//       ].concat(trusted),
-//     },
-//     // set to true if you only want to report errors
-//     reportOnly: false,
-//     // set to true if you want to set all headers
-//     setAllHeaders: false,
-//     // set to true if you want to force buggy CSP in Safari 5
-//     safari5: false
-//   });
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
